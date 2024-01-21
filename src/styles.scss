@@ -37,6 +37,23 @@ body {
   margin: 0 auto;
 }
 
+.button {
+  position: relative;
+  z-index: 4;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 18px;
+  font-family: GilroyBold, sans-serif;
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: .4s all linear;
+}
+
+.button:hover {
+  box-shadow: 0 5px 9px 1px rgba(130, 19, 40, 0.5);
+}
+
 @media screen and (max-width: 1229px) {
   .container {
     padding-left: 15px;

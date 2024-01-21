@@ -42,7 +42,7 @@
       </ul>
     </nav>
     <div class="phone">
-      <a href="tel:+375 (29) 368-98-68" class="phone-number">{{contacts.phoneNumber}}</a>
+      <a href="tel:+375 (29) 368-98-68" class="phone-number">{{contacts.phoneNumber | phoneEditor}}</a>
     </div>
   </div>
 </header>
@@ -56,7 +56,7 @@
         Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
       </div>
       <div class="main-action">
-        <button class="button" (click)="scrollTo(productsElement)">Выбрать макарун</button>
+        <button class="button" ButtonColors (click)="scrollTo(productsElement)">Выбрать макарун</button>
       </div>
     </div>
     <div class="main-image">
@@ -89,7 +89,7 @@
         </div>
         <h4 class="advanced-item-title" >{{advantage.title}}</h4>
         <p class="advanced-item-description">
-          {{advantage.description}}
+          {{advantage.description | textLenghtEditor}}
         </p>
       </div>
     </div>
@@ -99,20 +99,7 @@
   <div class="container">
     <h2 class="products-title">Выберите свой макарун</h2>
     <div class="product-items">
-      <div class="product-item" *ngFor="let product of products, let i = index">
-        <div class="product-image">
-          <img src="assets/images/{{product.image}}" alt="Тавар {{i+1}}">
-        </div>
-        <h4 class="product-name">{{product.title}}</h4>
-        <div class="product-info">
-          <span class="product-position">{{product.quantity}}</span>
-          <span class="product-price">{{product.price}}</span>
-        </div>
-        <div class="product-action">
-          <button class="button" (click)="addToCart(product, orderBlock)">Заказать</button>
-        </div>
-      </div>
-
+      <products *ngFor="let product of products" [product]="product" (addToCartEvent)="addToCart($event, orderBlock)"></products>
     </div>
   </div>
 </section>
@@ -138,7 +125,7 @@
           <input name="name" class="inputs input-form" type="text" placeholder="Ваше имя" [(ngModel)]="formValues.name">
           <input name="phone" class="inputs input- form" type="text" placeholder="+375 (__) ___ - __ - __" [(ngModel)]="formValues.phone">
           <div class="order-action">
-            <button class="button" (click)="createOrder()">Оформить заказ</button>
+            <button class="button" ButtonColors (click)="createOrder()">Оформить заказ</button>
           </div>
         </div>
       </form>
@@ -166,15 +153,15 @@
       </a>
     </div>
     <div class="phone">
-      <a href="tel:+375 (29) 368-98-68" class="phone-number">{{contacts.phoneNumber}}</a>
+      <a href="tel:+375 (29) 368-98-68" class="phone-number">{{contacts.phoneNumber | phoneEditor}}</a>
     </div>
   </div>
   <div class="footer-action-image" *ngIf="showPresent">
-    <img src="./assets/images/present.png" alt="Present" class="footer-action-img">
-    <div class="footer-action">
+    <img src="./assets/images/cart.png" alt="Present" class="footer-action-img">
+    <div class="footer-action" *ngIf="cartGlobal.count !== 0">
       <div class="footer-action-square"></div>
-      <span class="footer-action-text">Оформите заказ</span>
-      <span class="footer-action-text footer-action-text-bottom">и получите подарок!</span>
+      <span class="footer-action-text">{{commonPrice}} руб.</span>
     </div>
+    <div class="count-cart" *ngIf="cartGlobal.count > 0">{{cartGlobal.count}}</div>
   </div>
 </footer>

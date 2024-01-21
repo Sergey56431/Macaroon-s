@@ -1,0 +1,13 @@
+<div class="product-item" >
+  <div class="product-image">
+    <img src="assets/images/{{product.image}}" alt="Тавар">
+  </div>
+  <h4 class="product-name">{{product.title}}</h4>
+  <div class="product-info">
+    <span class="product-position">{{product.quantity}}</span>
+    <span class="product-price">{{product.price | currency: '': ''}} руб.</span>
+  </div>
+  <div class="product-action">
+    <button class="button" ButtonColors (click)="addProductToCart()">Заказать</button>
+  </div>
+</div>
