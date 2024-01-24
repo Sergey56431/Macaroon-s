@@ -8,6 +8,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { ButtonColorsDirective } from './directives/button-colors.directive';
 import { PhoneEditorPipe } from './pipes/phone-editor.pipe';
 import { TextLenghtEditorPipe } from './pipes/text-lenght-editor.pipe';
+import { AdvantagesComponent } from './components/advantages/advantages.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TextLenghtEditorPipe } from './pipes/text-lenght-editor.pipe';
     ProductsComponent,
     ButtonColorsDirective,
     PhoneEditorPipe,
-    TextLenghtEditorPipe
+    TextLenghtEditorPipe,
+    AdvantagesComponent
   ],
   imports: [
     BrowserModule,

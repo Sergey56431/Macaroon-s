@@ -5,7 +5,7 @@
   <h4 class="product-name">{{product.title}}</h4>
   <div class="product-info">
     <span class="product-position">{{product.quantity}}</span>
-    <span class="product-price">{{product.price | currency: '': ''}} руб.</span>
+    <span class="product-price">{{product.price | currency: 'RUB': 'руб.'}}</span>
   </div>
   <div class="product-action">
     <button class="button" ButtonColors (click)="addProductToCart()">Заказать</button>

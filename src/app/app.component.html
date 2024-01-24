@@ -83,15 +83,7 @@
       </div>
     </div>
     <div class="advanced-items">
-      <div class="advanced-item" *ngFor="let advantage of advantages, let i = index">
-        <div class="advanced-number">
-          <span>{{i+1}}</span>
-        </div>
-        <h4 class="advanced-item-title" >{{advantage.title}}</h4>
-        <p class="advanced-item-description">
-          {{advantage.description | textLenghtEditor}}
-        </p>
-      </div>
+      <advantages *ngFor="let advantage of advantages, let i = index" [advantage]="advantage" [i]="i"></advantages>
     </div>
   </div>
 </section>
@@ -160,7 +152,7 @@
     <img src="./assets/images/cart.png" alt="Present" class="footer-action-img">
     <div class="footer-action" *ngIf="cartGlobal.count !== 0">
       <div class="footer-action-square"></div>
-      <span class="footer-action-text">{{commonPrice}} руб.</span>
+      <span class="footer-action-text">{{commonPrice | currency: 'RUB': 'руб.'}}</span>
     </div>
     <div class="count-cart" *ngIf="cartGlobal.count > 0">{{cartGlobal.count}}</div>
   </div>
